@@ -1,0 +1,84 @@
+---
+title: "FWB: Algorithm"
+author: "Trent Lemkus"
+date: "October 22, 2018"
+output:
+  pdf_document:
+    fig_caption: yes
+    highlight: pygments
+    keep_tex: yes
+    number_sections: yes
+    toc: no
+---
+
+\newpage
+
+# Document Updated last:
+
+```{r stTime, echo=TRUE}
+stTime <- Sys.time()
+stTime 
+```
+
+
+
+```{r setup, include=FALSE}
+## Load Packages
+pkg <- c("MASS",
+         "ggplot2",
+         "tidyverse",
+         "tibble",
+         "DataExplorer",
+         "EnvStats", 
+         "gridExtra",
+         "corrplot",
+         "gclus",
+         "car",
+         "factoextra",
+         "gridBase",
+         "grid",
+         "knitr",
+         "cluster",
+         "Rtsne",
+         "ggrepel",
+         "xtable")
+
+sapply(pkg, require, character.only = TRUE)
+
+## Set Chunk Options
+knitr::opts_chunk$set(progress = TRUE,
+                      fig.width=11,
+                      fig.height=6,
+                      echo = FALSE,
+                      message = FALSE, 
+                      warning = FALSE,
+                      fig.align = "center",
+                      cache = TRUE, 
+                      cache.lazy = TRUE, 
+                      tidy=TRUE, 
+                      tidy.opts=list(blank=TRUE, width.cutoff=65)  )
+
+# Setup logical directory structure
+setwd("C:/Users/Admin/Desktop/UNH/Research/Thesis/Dr. Ramsey/Simulation Code/Git_Project/FWB/FWB_Algorithm")
+```  
+
+------------------------------------------------------      
+              
+# The Purpose             
+         
+This algorithm seeks to ameliorate issues currently experienced when attempting to fit models to "small" data sets. Apart from the obvious fact that these models are hopelessly overfit, validating these models becomes an impossible task with too few data points. Cross validation (CV) techniques fail when data is too small, even leave one out CV suffers from the "small" data ailment, train-test splits are affected worse then CV techniques, and simply comparing models based off of a fitted metric on the fitted data set leads to over fit models with little predictive power (if any when data n is too small).        
+       
+# The FWB Method       
+       
+This is a three step process:      
+        
+## Step 1: Auto-Validation         
+         
+We begin by duplicating the data set so that the original is considered a "Training" set and the duplicate as the "Validation" set, also known as Auto-Validation.            
+        
+## Step 2: Generate and Assign Anti-Correlated Weights         
+       
+
+
+## Step 3: Fit Model Using SSE Validated Forward Selection          
+         
